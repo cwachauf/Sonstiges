@@ -99,5 +99,48 @@ ConvertTupelSequence <- function(integer_sequ_vector)
   return(list_of_str)
 }
 
+GetAllSubstrings <- function(sequ,substr_length)
+{
+  first_str <- substr(sequ,1,substr_length)
+  vec_of_substr <- first_str
+  for(i in 2:(nchar(sequ)-substr_length+1))
+  {
+    curr_str <- substr(sequ,i,i+substr_length-1)
+    vec_of_substr <- c(vec_of_substr,curr_str)
+  }
+  return(vec_of_substr)
+}
 
+GetRepetitions <- function(sequ,substr_length)
+{
+  ## "make scaffold sequence circular..."
+  sstr_to_add <- substr(sequ,1,substr_length-1)
+  extended_scaff_sequ <- paste0(sequ,sstr_to_add)
+  vec_of_substrings <- GetAllSubstrings(extended_scaff_sequ,substr_length)
+  num_of_substrings <- length(vec_of_substrings)
+  print(num_of_substrings)
+  
+  uniques <- unique(vec_of_substrings)
+  
+  length_uniques <- length(uniques)
+  ##print(uniques)
+  ##print(length_uniques)
+  
+  frequencies <- array(0,dim=c(length_uniques))
+  ## count the sequences:
+  for(i in 1:length_uniques)
+  {
+    temp <- str_locate_all(extended_scaff_sequ,uniques[i])
+    frequencies[i] <- lengths(temp)/2
+    
+    ##curr_str <- uniques[i]
+    ##print(curr_str)
+  }
+  print(frequencies)
+  sum(frequencies)
+  hist(frequencies)
+  print(frequencies>1)
+  ind <- which(frequencies>1)
+  print(ind)
+}
 
