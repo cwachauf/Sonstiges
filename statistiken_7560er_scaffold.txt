@@ -1,0 +1,7 @@
+Statistiken über 7560er - scaffold:
+	- 7er - Sequenzen, die mehr als 1x vorkommen:
+		1546 Stück
+	- 7er - Sequenzen, die mehr als 2x vorkommen:
+		474 Stück
+	- am häufigsten vorkommende 7er-Sequenz:
+		TGAGGGT (10x)

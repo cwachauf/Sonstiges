@@ -138,9 +138,15 @@ GetRepetitions <- function(sequ,substr_length)
   }
   print(frequencies)
   sum(frequencies)
-  hist(frequencies)
+   barplot(table(frequencies),ylab="Häufigkeit von 7er Tupeln")
   print(frequencies>1)
   ind <- which(frequencies>1)
   print(ind)
+  print(uniques[ind])
+  print(length(ind))
+  index <- which.max(frequencies)
+  print(index)
+  print(uniques[index])
+  print(uniques[2078])
 }
 
